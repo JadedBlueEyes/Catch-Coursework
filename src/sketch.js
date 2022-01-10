@@ -1,4 +1,5 @@
-import Game from "./Game.js";
+// import Game from "./Game.js";
+import Game from "./Ball.js";
 import MainMenu from "./MainMenu.js";
 
 const s = p => {
@@ -14,7 +15,7 @@ const s = p => {
         (e) => {
             if (e === "play") {
                 state = "Game"
-                game = new Game();
+                game = new Game(200, 200, 20, 4, 2);
             }
         }
 
@@ -26,18 +27,18 @@ const s = p => {
 
     p.draw = () => {
         p.clear()
-        
+
         switch (state) {
             case "MainMenu":
                 mainMenu.draw(p)
 
-                mainMenu.update(p)
+                mainMenu.update()
                 break;
             
             case "Game":
                 game.draw(p)
 
-                game.update(p)
+                game.update(p.width, p.height)
             default:
                 break;
         }

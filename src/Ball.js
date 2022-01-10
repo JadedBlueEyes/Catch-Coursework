@@ -13,7 +13,7 @@ export default class Ball {
         p.ellipse(this.x, this.y, this.diameter, this.diameter)
     }
 
-    move (w, h) {
+    update (w, h) {
         this.x += this.velocityX
         this.y += this.velocityY
         this.bounce(w, h)
