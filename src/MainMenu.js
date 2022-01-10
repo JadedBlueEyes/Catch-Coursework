@@ -1,6 +1,6 @@
 import Text from "./Text.js";
 
-export default class Menu {
+export default class MainMenu {
     constructor(w, h, x, y, cb) {
         this.gameNameText = new Text("Matrix Catch", x + (w/2), y + (h/4), undefined, undefined, "center_center", [255], 30)
         this.playText = new Text("Play!", x + (w/2), y + (h/2), 24*5, 24*1.5, "center_center", [255], 24)
@@ -10,7 +10,7 @@ export default class Menu {
     }
 
     onClick(x, y) {
-        console.log("menu click")
+        // console.log("menu click")
         if (this.playText.pointWithin(x, y)) {
             this.cb("play")
         }

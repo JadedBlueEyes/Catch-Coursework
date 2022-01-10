@@ -23,7 +23,6 @@ export default class Text {
         this.positioning = positioning;
         this.colour = colour;
         this.size = size;
-        console.log(this.text, this.x, this.y, this.w, this.h)
     }
 
     /**
