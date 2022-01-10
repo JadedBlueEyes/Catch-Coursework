@@ -8,12 +8,12 @@ html {
 }
 
 @media (prefers-color-scheme: light) {
-    html {
-        background: #e0e0e0;
-    }
+  html {
+    background: #e0e0e0;
+  }
 }
 
-canvas#game {
+canvas {
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;
