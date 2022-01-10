@@ -9,12 +9,12 @@ const s = p => {
   };
 
   p.draw = function() {
+    // Draw everything
     p.background(55);
-    
-    ball.move(p.width, p.height)
-
     ball.draw(p)
-
+    
+    // calculate updates, etc.
+    ball.move(p.width, p.height)
   };
 };
 
