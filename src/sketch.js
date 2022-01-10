@@ -24,7 +24,7 @@ const s = p => {
         mainMenu = new MainMenu(p.width, p.height, 0, 0, stateManager);
         state = "MainMenu";
 
-        updateStepper()
+        // updateStepper()
     };
 
     p.draw = () => {
@@ -44,8 +44,9 @@ const s = p => {
             default:
                 break;
         }
-    };
 
+        update()
+    };
 
     function update() {
         switch (state) {
@@ -65,27 +66,27 @@ const s = p => {
     }
 
 
-    let interval = 16; // ms
-    let expected = Date.now() + interval;
-    // setTimeout(updateStepper, interval);
-    // 
-    function updateStepper() {
-        var dt = Date.now() - expected; // the drift (positive for overshooting)
-        if (dt > interval) {
-            console.log("Game updates behind, running catchup")
-            console.log(dt, dt % interval)
-            for (let i = 0; i < (dt % interval); i++) { 
-                console.log(i+1)
-                update()
-            }
-        }
+    // let interval = 16; // ms
+    // let expected = Date.now() + interval;
+    // // setTimeout(updateStepper, interval);
+    // // 
+    // function updateStepper() {
+    //     var dt = Date.now() - expected; // the drift (positive for overshooting)
+    //     if (dt > interval) {
+    //         console.log("Game updates behind, running catchup")
+    //         console.log(dt, dt % interval)
+    //         for (let i = 0; i < (dt % interval); i++) { 
+    //             console.log(i+1)
+    //             update()
+    //         }
+    //     }
 
-        update()
+    //     update()
 
 
-        expected += interval;
-        window.setTimeout(updateStepper, Math.max(0, interval - dt)); // take into account drift
-    }
+    //     expected += interval;
+    //     window.setTimeout(updateStepper, Math.max(0, interval - dt)); // take into account drift
+    // }
 
 
     p.mousePressed = () => {
