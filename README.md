@@ -1,4 +1,4 @@
-# Catch-coursework - git example
+# Catch-coursework
 
 View here:
 
