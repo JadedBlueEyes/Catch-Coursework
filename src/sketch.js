@@ -1,3 +1,5 @@
+import "./vendor/p5.js"
+
 // import Game from "./Game.js";
 import Game from "./Ball.js";
 import MainMenu from "./MainMenu.js";
