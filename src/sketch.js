@@ -1,102 +1,134 @@
-import "./vendor/p5.js"
+/*
 
-import Game from "./Game.js";
-// import Game from "./Ball.js";
-import MainMenu from "./MainMenu.js";
+P5 is being used.
 
-// const s = p => {
-let game;
-let mainMenu;
+p5 calls preload as the page loads,
+setup once when the page loads,
+and draw once every frame.
 
+*/
+
+// Global variables
+
+let score;
+let lives;
 /**
- * @type {"MainMenu"|"Game"|"DeathMenu"|"Scoreboard"}
+ * @type { "running" | "gameOver"}
  */
 let state;
+let fallingObjects;
+let fallingObjectSpawnTimeout;
 
-let stateManager =
-    (e) => {
-        if (e === "play") {
-            state = "Game"
-            game = new Game(200, 200, 20, 4, 2);
+let stars;
+
+let fallingObjectImage;
+
+const starCount = 256;
+
+function resetGame() {
+    score = 0;
+    lives = 5;
+    state = "running"
+    fallingObjects = [];
+    fallingObjectSpawnTimeout = Date.now() + random(0, 500);
+}
+
+function preload() {
+    // load assets for main game - fuel, spaceship pngs
+    fallingObjectImage = loadImage("assets/fuel.png")
+}
+
+function setup () {
+    createCanvas(800, 600);
+
+    // reset all game values to defaults
+    resetGame();
+    
+    // initialise star array
+    stars = new Array();
+    
+    // populate star array
+    for (let i = 0; i < starCount; i++) {
+        stars.push(new Star(Math.random() * width, Math.random() * height));
+    }
+}
+
+function draw() {
+    // the following code is just for me to test - ben
+
+    // main game-loop
+    // 1) process input
+    // 2) update objects
+    stars.forEach(star => {
+        star.update();
+    });
+    if (state === "running") {
+        if (fallingObjectSpawnTimeout <= Date.now()) {
+            fallingObjects.push(new FallingObject(Math.random() * (width-objectFallingSize*2) + objectFallingSize, fallingObjectImage))
+            fallingObjectSpawnTimeout = Date.now() + random(1500, 5000);
         }
+
+        // Update falling objects
+        fallingObjects = fallingObjects.filter((object) => {
+            object.update()
+            // If offscreen, remove a live, check for 0 lives, die.
+            if (object.y > height + objectFallingSize) {
+                lives -= 1;
+                if (lives < 0) {
+                    state = "gameOver"
+                }
+                return false;
+            }
+        })
     }
 
-window.setup = () => {
-    window.createCanvas(800, 600);
-    mainMenu = new MainMenu(window.width, window.height, 0, 0, stateManager);
-    state = "MainMenu";
+    
+    // 3) draw objects
+    background("#2d2d2d");
 
-    // updateStepper()
-};
+    stars.forEach(star => {
+        star.draw();
+    });
 
-window.draw = () => {
-    window.clear()
+    fallingObjects.forEach((object) => {
+        object.draw()
+    })
 
-    switch (state) {
-        case "MainMenu":
-            mainMenu.draw(window)
 
-            // mainMenu.update()
-            break;
 
-        case "Game":
-            game.draw(window)
+    // draw score
+    if (state === "running") {
+        push();
 
-        // game.update(p.width, p.height)
-        default:
-            break;
+        textAlign(LEFT, TOP);
+        textSize(20);
+        strokeWeight(1.5);
+        fill("#5050FF");
+        text("Score: " + score, 15, 15)
+        text("Lives: " + lives, 15, 40)
+
+        pop()
     }
 
-    update()
-};
+    // draw death screen
+    if (state === "gameOver") {
+        push();
 
-function update () {
-    switch (state) {
-        case "MainMenu":
-            // mainMenu.draw(p)
+        textAlign(CENTER, CENTER);
+        textSize(32);
+        strokeWeight(2);
+        fill("#FF5050");
+        text("YOU DIED!", width / 2, height / 3)
 
-            mainMenu.update()
-            break;
 
-        case "Game":
-            // game.draw(p)
+        textAlign(CENTER, BOTTOM);
+        textSize(24);
+        strokeWeight(2);
+        fill("#50F050");
+        text("Score: " + score, width / 2, height / 2)
 
-            game.update(window.width, window.height)
-        default:
-            break;
+        pop()
+
     }
+
 }
-
-
-// let interval = 16; // ms
-// let expected = Date.now() + interval;
-// // setTimeout(updateStepper, interval);
-// // 
-// function updateStepper() {
-//     var dt = Date.now() - expected; // the drift (positive for overshooting)
-//     if (dt > interval) {
-//         console.log("Game updates behind, running catchup")
-//         console.log(dt, dt % interval)
-//         for (let i = 0; i < (dt % interval); i++) { 
-//             console.log(i+1)
-//             update()
-//         }
-//     }
-
-//     update()
-
-
-//     expected += interval;
-//     window.setTimeout(updateStepper, Math.max(0, interval - dt)); // take into account drift
-// }
-
-
-window.mousePressed = () => {
-    let x = window.mouseX;
-    let y = window.mouseY;
-    // console.log("click")
-    mainMenu?.onClick(x, y)
-}
-// };
-
-// let _ = new p5(s);
