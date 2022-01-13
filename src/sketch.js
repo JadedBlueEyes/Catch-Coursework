@@ -19,9 +19,11 @@ let state;
 let fallingObjects;
 let fallingObjectSpawnTimeout;
 
+let player;
 let stars;
 
 let fallingObjectImage;
+let spaceshipImage;
 
 const starCount = 256;
 
@@ -30,12 +32,14 @@ function resetGame() {
     lives = 5;
     state = "running"
     fallingObjects = [];
-    fallingObjectSpawnTimeout = Date.now() + random(0, 500);
+    fallingObjectSpawnTimeout = Date.now() + 100 + random(0, 500);
+    // the "100 +" adds a minimun spawn time of 100ms so they dont spawn straight after each other
 }
 
 function preload() {
     // load assets for main game - fuel, spaceship pngs
-    fallingObjectImage = loadImage("assets/fuel.png")
+    fallingObjectImage = loadImage("assets/fuel.png");
+    spaceshipImage = loadImage("assets/spaceship.png");
 }
 
 function setup() {
@@ -51,6 +55,8 @@ function setup() {
     for (let i = 0; i < starCount; i++) {
         stars.push(new Star(Math.random() * width, Math.random() * height));
     }
+
+    player = new Player(spaceshipImage);
 }
 
 function draw() {
@@ -62,6 +68,9 @@ function draw() {
     stars.forEach(star => {
         star.update();
     });
+
+    player.update();
+
     if (state === "running") {
         if (fallingObjectSpawnTimeout <= Date.now()) {
             fallingObjects.push(new FallingObject(Math.random() * (width - objectFallingSize * 2) + objectFallingSize, fallingObjectImage))
@@ -94,6 +103,8 @@ function draw() {
     fallingObjects.forEach((object) => {
         object.draw()
     })
+
+    player.draw();
 
 
 
