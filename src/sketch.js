@@ -79,6 +79,7 @@ function draw() {
                 }
                 return false;
             }
+            return true;
         })
     }
 

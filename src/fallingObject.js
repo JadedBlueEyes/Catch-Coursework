@@ -10,10 +10,13 @@ class FallingObject {
         // Spawn offscreen to avoid sudden pixels
         this.y = -objectFallingSize;
     }
+
     update() {
         this.y += objectFallingSpeed;
     }
+    
     draw() {
+        push();
 
         fill("red")
 
