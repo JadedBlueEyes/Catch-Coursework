@@ -1,5 +1,5 @@
 const objectFallingSpeed = 1.25;
-const objectFallingSize = 64;
+const objectFallingSize = 48;
 
 
 class FallingObject {
@@ -17,7 +17,7 @@ class FallingObject {
 
         fill("red")
 
-        image(this.sprite, this.x,this.y, objectFallingSize, objectFallingSize)
+        image(this.sprite, this.x, this.y, objectFallingSize, objectFallingSize)
 
         pop();
     }

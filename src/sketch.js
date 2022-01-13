@@ -38,15 +38,15 @@ function preload() {
     fallingObjectImage = loadImage("assets/fuel.png")
 }
 
-function setup () {
+function setup() {
     createCanvas(800, 600);
 
     // reset all game values to defaults
     resetGame();
-    
+
     // initialise star array
     stars = new Array();
-    
+
     // populate star array
     for (let i = 0; i < starCount; i++) {
         stars.push(new Star(Math.random() * width, Math.random() * height));
@@ -64,7 +64,7 @@ function draw() {
     });
     if (state === "running") {
         if (fallingObjectSpawnTimeout <= Date.now()) {
-            fallingObjects.push(new FallingObject(Math.random() * (width-objectFallingSize*2) + objectFallingSize, fallingObjectImage))
+            fallingObjects.push(new FallingObject(Math.random() * (width - objectFallingSize * 2) + objectFallingSize, fallingObjectImage))
             fallingObjectSpawnTimeout = Date.now() + random(1500, 5000);
         }
 
@@ -82,7 +82,7 @@ function draw() {
         })
     }
 
-    
+
     // 3) draw objects
     background("#2d2d2d");
 

@@ -1,4 +1,4 @@
-const starMaxSize = 6;
+const starMaxSize = 5;
 const starVerticalSpeed = 1;
 
 class Star {
@@ -11,7 +11,7 @@ class Star {
 
         // move the star down based on its size for parallax effect
         // (a larger star is "closer" so it moves faster)
-        this.position.y += starVerticalSpeed * this.size / starMaxSize;
+        this.position.y += starVerticalSpeed * (this.size / starMaxSize);
 
         // teleport star to top of screen to reuse if out of bounds
         if (this.position.y > height + starMaxSize) {
@@ -23,7 +23,8 @@ class Star {
         push();
 
         noStroke();
-        fill(this.size / 4 * 255);
+        // colour the star based on its size - the larger (the closer), the brighter
+        fill(this.size / starMaxSize * 255);
         circle(this.position.x, this.position.y, this.size);
 
         pop();
