@@ -14,7 +14,7 @@ class FallingObject {
     update() {
         this.y += objectFallingSpeed;
     }
-    
+
     draw() {
         push();
 

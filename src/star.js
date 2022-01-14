@@ -27,7 +27,7 @@ class Star {
         fill(this.size / starMaxSize * 255);
         circle(this.position.x, this.position.y, this.size);
         // draw a secondary (closer) smaller circle just above the star for a droplet effect
-        circle(this.position.x, this.position.y - 2, this.size/2);
+        circle(this.position.x, this.position.y - 2, this.size / 2);
 
         pop();
     }
