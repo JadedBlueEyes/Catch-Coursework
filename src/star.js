@@ -26,7 +26,7 @@ class Star {
         // colour the star based on its size - the larger (the closer), the brighter
         fill(this.size / starMaxSize * 255);
         circle(this.position.x, this.position.y, this.size);
-        // draw a secondary circle just above the star for a droplet effect
+        // draw a secondary (closer) smaller circle just above the star for a droplet effect
         circle(this.position.x, this.position.y - 2, this.size/2);
 
         pop();
