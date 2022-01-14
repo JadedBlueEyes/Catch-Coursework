@@ -1,4 +1,5 @@
 const playerSize = 48;
+const playerSpeed = 5;
 
 class Player {
     constructor(sprite) {
@@ -8,10 +9,16 @@ class Player {
 
     update() {
         if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) { // keycode 65 = "a"
-            this.position.x -= 5;
+            // prevent player crossing left side of screen
+            if (this.position.x - playerSize / 2 > playerSpeed) {
+                this.position.x -= playerSpeed;
+            }
         }
         if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) { // keycode 68 = "d"
-            this.position.x += 5;
+            // prevent player crossing right side of screen
+            if (this.position.x + playerSize / 2 < width - playerSpeed) {
+                this.position.x += playerSpeed;
+            }
         }
     }
 
