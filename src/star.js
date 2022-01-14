@@ -1,5 +1,5 @@
-const starMaxSize = 5;
-const starVerticalSpeed = 1;
+const starMaxSize = 4;
+const starVerticalSpeed = 2;
 
 class Star {
     constructor(x, y) {
@@ -26,6 +26,8 @@ class Star {
         // colour the star based on its size - the larger (the closer), the brighter
         fill(this.size / starMaxSize * 255);
         circle(this.position.x, this.position.y, this.size);
+        // draw a secondary circle just above the star for a droplet effect
+        circle(this.position.x, this.position.y - 2, this.size/2);
 
         pop();
     }

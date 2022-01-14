@@ -8,10 +8,10 @@ class Player {
 
     update() {
         if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) { // keycode 65 = "a"
-            this.position.x -= 2;
+            this.position.x -= 5;
         }
         if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) { // keycode 68 = "d"
-            this.position.x += 2;
+            this.position.x += 5;
         }
     }
 

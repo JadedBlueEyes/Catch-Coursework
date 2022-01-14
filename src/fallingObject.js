@@ -1,4 +1,4 @@
-const objectFallingSpeed = 1.25;
+const objectFallingSpeed = 5;
 const objectFallingSize = 48;
 
 
