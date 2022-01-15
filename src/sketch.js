@@ -32,8 +32,7 @@ function resetGame() {
     lives = 5;
     state = "running"
     fallingObjects = [];
-    fallingObjectSpawnTimeout = Date.now() + 100 + random(0, 500);
-    // the "100 +" adds a minimun spawn time of 100ms so they dont spawn straight after each other
+    fallingObjectSpawnTimeout = Date.now() + random(0, 500);
 }
 
 function preload() {
