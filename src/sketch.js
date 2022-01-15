@@ -88,9 +88,27 @@ function draw() {
                 }
                 return false;
             }
+
+            // Check for collisions with the player, add score
+            // console.debug(player.position.y, object.y + objectFallingSize)
+            // console.debug(player.position.y + playerSize, object.y)
+            if (
+                ( // Object is within the X coordinates of the player
+                    (player.position.x < (object.x + objectFallingSize)) &&
+                    ((player.position.x + playerSize) > object.x)
+                ) &&
+                ( // Object is touching the Y coordinates of the player
+                    (player.position.y < (object.y + objectFallingSize)) &&
+                    ((player.position.y + playerSize) > object.y)
+                )
+                ) {
+                score += 1;
+                return false
+            }
             return true;
         })
     }
+
 
 
     // 3) draw objects
