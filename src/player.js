@@ -32,7 +32,7 @@ class Player {
     draw() {
         push();
 
-        image(this.sprite, this.position.x, this.position.y, playerSize - (this.tilt ? playerSize / 4 : 0), playerSize);
+        image(this.sprite, this.position.x + (this.tilt ? playerSize / 8 : 0), this.position.y, playerSize - (this.tilt ? playerSize / 4 : 0), playerSize);
 
         pop();
     }
