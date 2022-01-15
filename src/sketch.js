@@ -56,6 +56,7 @@ function setup() {
         stars.push(new Star(Math.random() * width, Math.random() * height));
     }
 
+    // Create player
     player = new Player(spaceshipImage);
 }
 
@@ -151,14 +152,30 @@ function draw() {
         text("YOU DIED!", width / 2, height / 3)
 
 
-        textAlign(CENTER, BOTTOM);
+        textAlign(CENTER, CENTER);
         textSize(24);
         strokeWeight(2);
         fill("#50F050");
         text("Score: " + score, width / 2, height / 2)
 
+        textAlign(CENTER, CENTER);
+        textSize(24);
+        strokeWeight(2);
+        fill("#F0F0F0");
+        text("SPACE TO RESTART", width / 2, (height / 3) * 2)
+        
+
         pop()
 
     }
 
+}
+
+function keyPressed() {
+    if (key == ' ') {
+        if (state === "gameOver") {
+            resetGame();
+            state = "running" 
+        }
+    }
 }
