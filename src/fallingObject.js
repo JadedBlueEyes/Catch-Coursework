@@ -1,4 +1,6 @@
-const objectFallingSpeed = 5;
+// height / Falling object speed  cannot be below width / player speed
+// or it can become impossible for the player to reach the fuel in time
+const objectFallingSpeed = 3.5;
 const objectFallingSize = 48;
 
 
