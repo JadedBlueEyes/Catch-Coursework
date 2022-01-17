@@ -75,7 +75,7 @@ function draw() {
     if (state === "running") {
         if (fallingObjectSpawnTimeout <= Date.now()) {
             fallingObjects.push(new FallingObject(Math.random() * (width - objectFallingSize * 2) + objectFallingSize, fallingObjectImage))
-            fallingObjectSpawnTimeout = Date.now() + random(1500, 5000);
+            fallingObjectSpawnTimeout = Date.now() + random(1500, 3000);
         }
 
         // Update falling objects
