@@ -20,8 +20,6 @@ class FallingObject {
     draw() {
         push();
 
-        fill("red")
-
         image(this.sprite, this.x, this.y, objectFallingSize, objectFallingSize)
 
         pop();

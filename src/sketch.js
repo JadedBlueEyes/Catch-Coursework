@@ -60,11 +60,12 @@ function setup() {
 }
 
 function draw() {
-    // the following code is just for me to test - ben
 
     // main game-loop
-    // 1) process input
-    // 2) update objects
+    // 1) process inputs
+    // 2) update game world
+    // 3) draw objects
+
     stars.forEach(star => {
         star.update();
     });
@@ -90,8 +91,6 @@ function draw() {
             }
 
             // Check for collisions with the player, add score
-            // console.debug(player.position.y, object.y + objectFallingSize)
-            // console.debug(player.position.y + playerSize, object.y)
             if (
                 ( // Object is within the X coordinates of the player
                     (player.position.x < (object.x + objectFallingSize)) &&
@@ -134,8 +133,8 @@ function draw() {
         textSize(20);
         strokeWeight(1.5);
         fill("#5050FF");
-        text("Score: " + score, 15, 15)
-        text("Lives: " + lives, 15, 40)
+        text("Score: " + score, 15, 40)
+        text("Lives: " + lives + "/5", 15, 15)
 
         pop()
     }
