@@ -135,6 +135,7 @@ function draw() {
         fill("#5050FF");
         text("Score: " + score, 15, 40)
         text("Lives: " + lives + "/5", 15, 15);
+        text("A/D to move horizontally", width - 228, 15);
 
         pop();
     }
