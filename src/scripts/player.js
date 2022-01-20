@@ -4,8 +4,9 @@ const playerSpeed = 5;
 class Player {
     constructor(sprite) {
         this.position = {
-            x: ( width / 2 ) - (playerSize / 2),
-            y: ( height - 80 ) - (playerSize / 2)};
+            x: (width / 2) - (playerSize / 2),
+            y: (height - 80) - (playerSize / 2)
+        };
         this.sprite = sprite;
         this.tilt = false;
     }
@@ -15,7 +16,7 @@ class Player {
 
         if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) { // keycode 65 = "a"
             // prevent player crossing left side of screen
-            if (this.position.x  > playerSpeed) {
+            if (this.position.x > playerSpeed) {
                 this.position.x -= playerSpeed;
                 this.tilt = true;
             }

@@ -74,7 +74,7 @@ function draw() {
 
     if (state === "running") {
         if (fallingObjectSpawnTimeout <= Date.now()) {
-            fallingObjects.push(new FallingObject(Math.random() * (width - objectFallingSize * 2) + objectFallingSize, fallingObjectImage))
+            fallingObjects.push(new FallingObject(Math.random() * (width - objectFallingSize * 2) + objectFallingSize, fallingObjectImage));
             fallingObjectSpawnTimeout = Date.now() + random(1500, 3000);
         }
 
@@ -85,7 +85,7 @@ function draw() {
             if (object.y > height + objectFallingSize) {
                 lives -= 1;
                 if (lives < 0) {
-                    state = "gameOver"
+                    state = "gameOver";
                 }
                 return false;
             }
@@ -100,9 +100,9 @@ function draw() {
                     (player.position.y < (object.y + objectFallingSize)) &&
                     ((player.position.y + playerSize) > object.y)
                 )
-                ) {
+            ) {
                 score += 1;
-                return false
+                return false;
             }
             return true;
         })
@@ -118,7 +118,7 @@ function draw() {
     });
 
     fallingObjects.forEach((object) => {
-        object.draw()
+        object.draw();
     })
 
     player.draw();
@@ -134,9 +134,9 @@ function draw() {
         strokeWeight(1.5);
         fill("#5050FF");
         text("Score: " + score, 15, 40)
-        text("Lives: " + lives + "/5", 15, 15)
+        text("Lives: " + lives + "/5", 15, 15);
 
-        pop()
+        pop();
     }
 
     // draw death screen
@@ -147,21 +147,21 @@ function draw() {
         textSize(32);
         strokeWeight(2);
         fill("#FF5050");
-        text("YOU DIED!", width / 2, height / 3)
+        text("YOU DIED!", width / 2, height / 3);
 
 
         textAlign(CENTER, CENTER);
         textSize(24);
         strokeWeight(2);
         fill("#50F050");
-        text("Score: " + score, width / 2, height / 2)
+        text("Score: " + score, width / 2, height / 2);
 
         textAlign(CENTER, CENTER);
         textSize(24);
         strokeWeight(2);
         fill("#F0F0F0");
-        text("SPACE TO RESTART", width / 2, (height / 3) * 2)
-        
+        text("SPACE TO RESTART", width / 2, (height / 3) * 2);
+
 
         pop()
 
@@ -173,7 +173,7 @@ function keyPressed() {
     if (key == ' ') {
         if (state === "gameOver") {
             resetGame();
-            state = "running" 
+            state = "running";
         }
     }
 }
