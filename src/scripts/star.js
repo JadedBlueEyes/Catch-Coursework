@@ -3,7 +3,7 @@ const starVerticalSpeed = 2;
 
 class Star {
     constructor(x, y) {
-        this.position = { x: x, y: y };
+        this.position = new Vector2(x, y);
         this.size = Math.random() * starMaxSize;
     }
 

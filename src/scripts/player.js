@@ -3,10 +3,10 @@ const playerSpeed = 5;
 
 class Player {
     constructor(sprite) {
-        this.position = {
-            x: (width / 2) - (playerSize / 2),
-            y: (height - 80) - (playerSize / 2)
-        };
+        this.position = new Vector2(
+            (width / 2) - (playerSize / 2),
+            (height - 80) - (playerSize / 2)
+        );
         this.sprite = sprite;
         this.tilt = false;
     }

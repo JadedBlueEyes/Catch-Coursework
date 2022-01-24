@@ -93,12 +93,12 @@ function draw() {
             // Check for collisions with the player, add score
             if (
                 ( // Object is within the X coordinates of the player
-                    (player.position.x < (object.x + objectFallingSize)) &&
-                    ((player.position.x + playerSize) > object.x)
+                    (player.position.x < (object.position.x + objectFallingSize)) &&
+                    ((player.position.x + playerSize) > object.position.x)
                 ) &&
                 ( // Object is touching the Y coordinates of the player
-                    (player.position.y < (object.y + objectFallingSize)) &&
-                    ((player.position.y + playerSize) > object.y)
+                    (player.position.y < (object.position.y + objectFallingSize)) &&
+                    ((player.position.y + playerSize) > object.position.y)
                 )
             ) {
                 score += 1;
