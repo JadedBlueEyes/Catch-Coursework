@@ -82,7 +82,7 @@ function draw() {
         fallingObjects = fallingObjects.filter((object) => {
             object.update()
             // If offscreen, remove a live, check for 0 lives, die.
-            if (object.y > height + objectFallingSize) {
+            if (object.position.y > height + objectFallingSize) {
                 lives -= 1;
                 if (lives < 0) {
                     state = "gameOver";
